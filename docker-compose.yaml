@@ -6,6 +6,7 @@ services:
       - 9090:9090
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
 
   node-exporter:
     image: prom/node-exporter:v0.18.1
@@ -32,3 +33,6 @@ services:
       - ./grafana/dashboards:/var/lib/grafana/dashboards
       - ./grafana/datasource.yaml:/etc/grafana/provisioning/datasources/prom.yml
       - ./grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yml
+
+volumes:
+  prometheus_data: {}
